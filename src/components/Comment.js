@@ -1,6 +1,9 @@
 import React from 'react';
+import { useHello } from '../useHello';
 
-function Comment({ comment }) {
+function Comment({ comment, helloMessage }) {
+  useHello(helloMessage, Comment);
+
   return (
     <article>
       <div>{comment.email} wrote:</div>

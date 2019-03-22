@@ -1,6 +1,9 @@
 import React from 'react';
+import { useHello } from '../useHello';
 
-function Search({ setQuery, query }) {
+function Search({ setQuery, query, helloMessage }) {
+  useHello(helloMessage, Search);
+
   return (
     <form autoComplete="off">
       <label htmlFor="search">Search by author:</label>

@@ -1,10 +1,11 @@
 import { get, set } from 'money-clip';
 import React, { useEffect, useState } from 'react';
 import { getData } from '../getData';
+import { useHello } from '../useHello';
 import PostItem from './PostItem';
 import Search from './Search';
 
-function PostList() {
+function PostList({ helloMessage }) {
   const [query, setQuery] = useState('');
   const [posts, setPosts] = useState([]);
   const [fetchedPosts, setFetchedPosts] = useState([]);
@@ -38,6 +39,8 @@ function PostList() {
     set('posts', postsWithUsernames);
     setFetchedPosts(postsWithUsernames);
   }
+
+  useHello(helloMessage, PostList);
 
   // Get cached or fetch new
   useEffect(() => {
@@ -77,9 +80,9 @@ function PostList() {
   return (
     <div>
       <h1>Post List</h1>
-      <Search query={query} setQuery={setQuery} />
+      <Search query={query} setQuery={setQuery} helloMessage={helloMessage} />
       {filteredPosts.map(post => (
-        <PostItem post={post} key={post.id} />
+        <PostItem post={post} key={post.id} helloMessage={helloMessage} />
       ))}
     </div>
   );

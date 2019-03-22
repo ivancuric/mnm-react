@@ -1,10 +1,18 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import { authManager } from '../authManager';
+import { useHello } from '../useHello';
 
-const PrivateRoute = props => {
+const PrivateRoute = ({ component: Component, helloMessage, ...rest }) => {
+  useHello(helloMessage, PrivateRoute);
+
   if (authManager.isAuthenticated) {
-    return <Route {...props} />;
+    return (
+      <Route
+        {...rest}
+        render={props => <Component {...props} helloMessage={helloMessage} />}
+      />
+    );
   }
   return <Redirect to="/" />;
 };

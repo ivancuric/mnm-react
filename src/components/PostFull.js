@@ -1,9 +1,14 @@
 import { get, set } from 'money-clip';
 import React, { useEffect, useState } from 'react';
 import { getData } from '../getData';
+import { useHello } from '../useHello';
 
 function PostFull(props) {
   const postId = props.match.params.id;
+  const { helloMessage } = props;
+
+  useHello(helloMessage, PostFull);
+
   const [post, setPost] = useState({
     title: '',
     body: '',

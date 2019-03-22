@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { authManager } from '../authManager';
 import { withRouter } from 'react-router-dom';
+import { useHello } from '../useHello';
 
-function LoginForm({ history }) {
+function LoginForm(props) {
+  const { helloMessage, history } = props;
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  useHello(helloMessage, LoginForm);
 
   function handleFormSubmit(event) {
     event.preventDefault();

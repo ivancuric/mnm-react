@@ -2,7 +2,7 @@ const validEmail = '123';
 const validPassword = '123';
 
 export const authManager = {
-  isAuthenticated: false,
+  isAuthenticated: true,
 
   isValid(email, password) {
     if (email === validEmail && password === validPassword) {
