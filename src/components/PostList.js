@@ -2,12 +2,15 @@ import { get, set } from 'money-clip';
 import React, { useEffect, useState } from 'react';
 import { getData } from '../getData';
 import PostItem from './PostItem';
+import Search from './Search';
 
 function PostList() {
+  const [query, setQuery] = useState('');
   const [posts, setPosts] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState([]);
 
   useEffect(() => {
-    async function fetchData() {
+    (async () => {
       const cachedPosts = await get('posts');
 
       if (cachedPosts) {
@@ -37,18 +40,21 @@ function PostList() {
         };
       });
 
-      // @ts-ignore
       set('posts', postsWithUsernames);
       setPosts(postsWithUsernames);
-    }
-
-    fetchData();
+    })();
   }, []);
+
+  useEffect(() => {
+    const filteredPosts = posts.filter(post => post.userName.includes(query));
+    setFilteredPosts(filteredPosts);
+  }, [query, posts]);
 
   return (
     <div>
       <h1>Post List</h1>
-      {posts.map(post => (
+      <Search query={query} setQuery={setQuery} />
+      {filteredPosts.map(post => (
         <PostItem post={post} key={post.id} />
       ))}
     </div>

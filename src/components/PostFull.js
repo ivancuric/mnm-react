@@ -11,7 +11,7 @@ function PostFull(props) {
   });
 
   useEffect(() => {
-    async function fetchData() {
+    (async () => {
       const cachedPost = await get(`post_id_${postId}`);
 
       if (cachedPost) {
@@ -22,8 +22,7 @@ function PostFull(props) {
       const post = await getData('posts/' + postId);
       set(`post_id_${postId}`, post.data);
       setPost(post.data);
-    }
-    fetchData();
+    })();
   }, []);
 
   return (
