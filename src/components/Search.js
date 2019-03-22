@@ -2,7 +2,7 @@ import React from 'react';
 
 function Search({ setQuery, query }) {
   return (
-    <form>
+    <form autoComplete="off">
       <label htmlFor="search">Search</label>
       <input
         type="search"
