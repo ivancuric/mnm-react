@@ -1,25 +1,27 @@
+import { get, set } from 'money-clip';
 import React, { useEffect, useState } from 'react';
-import { set, get } from 'money-clip';
 import { getData } from '../getData';
 import PostItem from './PostItem';
 
 function PostList() {
-  const [posts, setData] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
       const cachedPosts = await get('posts');
 
       if (cachedPosts) {
-        setData(cachedPosts);
+        setPosts(cachedPosts);
         return;
       }
 
       const posts = await getData('posts');
-      const userIds = Array.from(new Set(posts.data.map(post => post.userId)));
+      const uniqueUserIds = Array.from(
+        new Set(posts.data.map(post => post.userId)),
+      );
 
       const users = await Promise.all(
-        userIds.map(id => getData('users/' + id)),
+        uniqueUserIds.map(id => getData('users/' + id)),
       );
 
       const userMap = new Map();
@@ -37,7 +39,7 @@ function PostList() {
 
       // @ts-ignore
       set('posts', postsWithUsernames);
-      setData(postsWithUsernames);
+      setPosts(postsWithUsernames);
     }
 
     fetchData();

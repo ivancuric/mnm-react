@@ -1,5 +1,5 @@
+import { get, set } from 'money-clip';
 import React, { useEffect, useState } from 'react';
-import { set, get } from 'money-clip';
 import { getData } from '../getData';
 
 function PostFull(props) {
@@ -20,10 +20,8 @@ function PostFull(props) {
       }
 
       const post = await getData('posts/' + postId);
-      const bodyArray = post.data.body.split('\n');
-      const postWithArray = { ...post.data, bodyArray };
-      set(`post_id_${postId}`, postWithArray);
-      setPost(postWithArray);
+      set(`post_id_${postId}`, post.data);
+      setPost(post.data);
     }
     fetchData();
   }, []);
@@ -31,9 +29,7 @@ function PostFull(props) {
   return (
     <article>
       <h1>{post.title}</h1>
-      {post.bodyArray.map((p, i) => (
-        <p key={i}>{p}</p>
-      ))}
+      {post.body}
     </article>
   );
 }
