@@ -3,7 +3,7 @@ import React from 'react';
 function Search({ setQuery, query }) {
   return (
     <form autoComplete="off">
-      <label htmlFor="search">Search</label>
+      <label htmlFor="search">Search by author:</label>
       <input
         type="search"
         name="search"
