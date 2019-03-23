@@ -19,13 +19,11 @@ function App() {
             path="/app"
             helloMessage={helloMessage}
             component={PostList}
-            // render={props => <PostList {...props} />}
           />
           <PrivateRoute
             path="/post/:id"
             helloMessage={helloMessage}
             component={PostFull}
-            // render={props => <PostFull {...props} />}
           />
           <Route
             path="/"

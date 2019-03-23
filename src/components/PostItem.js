@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, memo } from 'react';
 import { Link } from 'react-router-dom';
 import { getData } from '../getData';
 import { useHello } from '../useHello';
@@ -38,4 +38,4 @@ function PostItem({ post, helloMessage }) {
   );
 }
 
-export default PostItem;
+export default memo(PostItem);

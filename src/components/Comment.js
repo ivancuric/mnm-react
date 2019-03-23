@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useHello } from '../useHello';
 
 function Comment({ comment, helloMessage }) {
@@ -12,4 +12,4 @@ function Comment({ comment, helloMessage }) {
   );
 }
 
-export default Comment;
+export default memo(Comment);

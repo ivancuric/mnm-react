@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useHello } from '../useHello';
 
 function Search({ setQuery, query, helloMessage }) {
@@ -18,4 +18,4 @@ function Search({ setQuery, query, helloMessage }) {
   );
 }
 
-export default Search;
+export default memo(Search);

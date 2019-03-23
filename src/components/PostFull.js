@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { getData } from '../getData';
 import { useHello } from '../useHello';
 
-function PostFull(props) {
+function PostFull({ helloMessage, ...props }) {
   const postId = props.match.params.id;
-  const { helloMessage } = props;
 
   useHello(helloMessage, PostFull);
 
