@@ -1,0 +1,39 @@
+.container {
+  margin-top: 10vh;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 360px;
+  width: 100%;
+
+  h1 {
+    margin-bottom: 1em;
+    text-align: center;
+  }
+}
+
+.textInput {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--martian-gray);
+  border-radius: 3px;
+  padding: 4px 12px;
+  font-size: 16px;
+}
+
+.inputLabel {
+  margin-top: 1em;
+  font-size: 16px;
+  display: table;
+}
+
+.loginButton {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  color: var(--martian-red);
+
+  &:hover {
+    color: var(--martian-red-light);
+  }
+}

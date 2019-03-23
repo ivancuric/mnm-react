@@ -1,8 +1,8 @@
-const validEmail = '123';
-const validPassword = '123';
+const validEmail = 'mm@mm.mm';
+const validPassword = 'mm';
 
 export const authManager = {
-  isAuthenticated: true,
+  isAuthenticated: false,
 
   isValid(email, password) {
     if (email === validEmail && password === validPassword) {

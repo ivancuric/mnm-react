@@ -1,9 +1,11 @@
 import React from 'react';
-import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import AllPosts from './components/AllPosts';
 import LoginForm from './components/LoginForm';
 import PostFull from './components/PostFull';
-import PostList from './components/PostList';
 import PrivateRoute from './components/PrivateRoute';
+import './styles/global.scss';
+import styles from './App.module.scss';
 import { useHello } from './useHello';
 
 function App() {
@@ -12,13 +14,12 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Link to="/app">All Posts</Link>
-      <main>
+      <div className={styles.mainContiner}>
         <Switch>
           <PrivateRoute
             path="/app"
             helloMessage={helloMessage}
-            component={PostList}
+            component={AllPosts}
           />
           <PrivateRoute
             path="/post/:id"
@@ -32,7 +33,7 @@ function App() {
             )}
           />
         </Switch>
-      </main>
+      </div>
     </BrowserRouter>
   );
 }

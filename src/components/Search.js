@@ -1,11 +1,16 @@
 import React, { memo } from 'react';
 import { useHello } from '../useHello';
+import styles from './Search.module.scss';
 
 function Search({ setQuery, query, helloMessage }) {
   useHello(helloMessage, Search);
 
   return (
-    <form autoComplete="off">
+    <form
+      className={styles.search}
+      autoComplete="off"
+      onSubmit={e => e.preventDefault()}
+    >
       <label htmlFor="search">Search by author:</label>
       <input
         type="search"
