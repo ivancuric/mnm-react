@@ -1,7 +1,9 @@
 import { get, set } from 'money-clip';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { getData } from '../getData';
 import { useHello } from '../useHello';
+import styles from './PostFull.module.scss';
 
 function PostFull({ helloMessage, ...props }) {
   const postId = props.match.params.id;
@@ -11,7 +13,6 @@ function PostFull({ helloMessage, ...props }) {
   const [post, setPost] = useState({
     title: '',
     body: '',
-    bodyArray: [],
   });
 
   useEffect(() => {
@@ -30,9 +31,12 @@ function PostFull({ helloMessage, ...props }) {
   }, []);
 
   return (
-    <article>
+    <article className={styles.article}>
+      <Link className={styles.allPosts} to="/app">
+        View all posts
+      </Link>
       <h1>{post.title}</h1>
-      {post.body}
+      <div className={styles.content}>{post.body}</div>
     </article>
   );
 }

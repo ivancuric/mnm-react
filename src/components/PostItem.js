@@ -1,9 +1,9 @@
-import React, { useEffect, useState, memo } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getData } from '../getData';
 import { useHello } from '../useHello';
 import CommentList from './CommentList';
-import styles from './PostItem.module.css';
+import styles from './PostItem.module.scss';
 
 function PostItem({ post, helloMessage }) {
   const [comments, setComments] = useState([]);
@@ -24,13 +24,22 @@ function PostItem({ post, helloMessage }) {
 
   return (
     <article className={styles.article}>
-      <Link to={'post/' + post.id}>
-        <h2>{post.title}</h2>
-      </Link>
-      <p>{post.userName}</p>
-      <button onClick={() => setCommentUrl(`/posts/${post.id}/comments`)}>
-        Get comments
+      <header>
+        <Link to={'post/' + post.id}>
+          <h2>{post.title}</h2>
+        </Link>
+        <p className={styles.author}>Author: {post.userName}</p>
+      </header>
+
+      <div className={styles.content}>{post.body}</div>
+
+      <button
+        className={styles.fetchComments}
+        onClick={() => setCommentUrl(`/posts/${post.id}/comments`)}
+      >
+        View Comments
       </button>
+
       {comments && (
         <CommentList comments={comments} helloMessage={helloMessage} />
       )}

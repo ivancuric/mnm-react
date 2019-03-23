@@ -1,0 +1,39 @@
+.article {
+  margin-top: 2em;
+  margin-bottom: 2em;
+
+  a {
+    color: var(--martian-red);
+
+    &:hover {
+      color: var(--martian-red-light);
+    }
+  }
+}
+
+h2 {
+  text-transform: capitalize;
+}
+
+.author {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-size: 0.8em;
+  color: var(--martian-darkgray);
+}
+
+.content {
+  * + * {
+    margin-top: 1em;
+  }
+}
+
+.fetchComments {
+  margin-top: 1em;
+  font-size: 14px;
+  color: hsl(199, 69%, 53%);
+
+  &:hover {
+    color: hsl(199, 75%, 65%);
+  }
+}

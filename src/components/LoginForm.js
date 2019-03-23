@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { authManager } from '../authManager';
 import { withRouter } from 'react-router-dom';
 import { useHello } from '../useHello';
+import styles from './LoginForm.module.scss';
 
 function LoginForm(props) {
   const { helloMessage, history } = props;
@@ -25,32 +26,38 @@ function LoginForm(props) {
   }
 
   return (
-    <>
+    <div className={styles.container}>
       {authManager.isAuthenticated ? (
         <p>You're already logged in!</p>
       ) : (
         <form onSubmit={handleFormSubmit}>
           <h1>Login</h1>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email" className={styles.inputLabel}>
+            Email
+          </label>
           <input
+            className={styles.textInput}
             type="text"
             name="email"
             id="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
           />
-          <label htmlFor="search">Password</label>
+          <label htmlFor="password" className={styles.inputLabel}>
+            Password
+          </label>
           <input
+            className={styles.textInput}
             type="password"
             name="password"
             id="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
           />
-          <button>Login</button>
+          <button className={styles.loginButton}>Login</button>
         </form>
       )}
-    </>
+    </div>
   );
 }
 
