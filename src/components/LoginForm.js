@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom';
 import { useHello } from '../useHello';
 import styles from './LoginForm.module.scss';
 
+// TODO: logout
+
 function LoginForm(props) {
   const { helloMessage, history } = props;
 
