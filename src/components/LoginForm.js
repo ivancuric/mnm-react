@@ -39,7 +39,7 @@ function LoginForm(props) {
           </label>
           <input
             className={styles.textInput}
-            type="text"
+            type="email"
             name="email"
             id="email"
             value={email}
